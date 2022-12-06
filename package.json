@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "File difference generator",
+  "description": "Compares two configuration files and shows a difference.",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
@@ -20,7 +20,8 @@
     "url": "https://github.com/zhannabraun/frontend-project-46/issues"
   },
   "homepage": "https://github.com/zhannabraun/frontend-project-46#readme",
-  "devDependencies": {
-    "commander": "^9.4.1"
+  "dependencies": {
+    "commander": "^9.4.1",
+    "lodash": "^4.17.21"
   }
 }
