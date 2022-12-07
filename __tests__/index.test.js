@@ -1,3 +1,4 @@
+import { test, expect } from '@jest/globals';
 import url from 'url';
 import path from 'path';
 import genDiff from '../src/index.js';
