@@ -1,6 +1,7 @@
 # File difference generator
 
 [![Actions Status](https://github.com/zhannabraun/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/zhannabraun/frontend-project-46/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ccd0b09182f651700d06/maintainability)](https://codeclimate.com/github/zhannabraun/frontend-project-46/maintainability)
 
 'File difference generator' – programm that compares two configuration files and shows a difference.
 
