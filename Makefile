@@ -1,8 +1,8 @@
 install: install-deps
-	npm ci
+	npx simple-git-hooks
 
-gendiff:
-	node bin/gendiff.js
+install-deps:
+	npm ci
 
 publish:
 	npm publish --dry-run
@@ -12,3 +12,9 @@ lint:
 
 test:
 	NODE_OPTIONS=--experimental-vm-modules npx jest
+
+test-coverage:
+	NODE_OPTIONS=--experimental-vm-modules npx jest --coverage
+
+gendiff:
+	node bin/gendiff.js
