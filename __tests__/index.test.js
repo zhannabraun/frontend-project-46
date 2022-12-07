@@ -1,6 +1,5 @@
 import url from 'url';
 import path from 'path';
-import fs from 'fs';
 import genDiff from '../src/index.js';
 import expectedResult from '../__fixtures__/expected_file.js';
 
