@@ -16,5 +16,8 @@ $ sudo npm link
 ```
 
 ### Usage
-
+#### Compare flat JSON files
 <a href="https://asciinema.org/a/4861fd8P6yIjHW8fYKAOuiwmw" target="_blank"><img src="https://asciinema.org/a/4861fd8P6yIjHW8fYKAOuiwmw.svg" width="540"/></a>
+
+#### Compare flat YAML files
+<a href="https://asciinema.org/a/I8AsrIh0pXeXVjy55S8OThF5M" target="_blank"><img src="https://asciinema.org/a/I8AsrIh0pXeXVjy55S8OThF5M.svg" width="540"/></a>

@@ -1,13 +1,12 @@
-import fs from 'fs';
 import path from 'path';
-import compareData from './utilities.js';
+import parsing from './parsers.js';
+import { compareData } from './utilities.js';
 
 const genDiff = (filepath1, filepath2) => {
-  const data1 = JSON.parse(fs.readFileSync(path.resolve(filepath1), 'utf-8'));
-  const data2 = JSON.parse(fs.readFileSync(path.resolve(filepath2), 'utf-8'));
-  const result = compareData(data1, data2);
+  const data1 = parsing(path.resolve(filepath1));
+  const data2 = parsing(path.resolve(filepath2));
 
-  return result;
+  return compareData(data1, data2);
 };
 
 export default genDiff;

@@ -1,4 +1,10 @@
 import _ from 'lodash';
+import path from 'path';
+import fs from 'fs';
+
+const getExtension = (filepath) => path.extname(filepath);
+
+const readFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
 
 const compareData = (data1, data2) => {
   const keys1 = Object.keys(data1);
@@ -22,4 +28,4 @@ const compareData = (data1, data2) => {
   return ['{', ...diff].join('\n  ').concat('\n}');
 };
 
-export default compareData;
+export { getExtension, readFile, compareData };
