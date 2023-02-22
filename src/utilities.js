@@ -6,26 +6,55 @@ const getExtension = (filepath) => path.extname(filepath);
 
 const readFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
 
-const compareData = (data1, data2) => {
-  const keys1 = Object.keys(data1);
-  const keys2 = Object.keys(data2);
-  const keys = _.sortBy(_.union(keys1, keys2));
+const buildKeyData = (key, status, value, modyfiedValue = '') => (
+  { key, status, value, modyfiedValue }
+);
 
-  const diff = keys.reduce((acc, key) => {
-    if (!Object.hasOwn(data1, key)) {
-      acc.push(`+ ${key}: ${data2[key]}`);
-    } else if (!Object.hasOwn(data2, key)) {
-      acc.push(`- ${key}: ${data1[key]}`);
-    } else if (data1[key] !== data2[key]) {
-      acc.push(`- ${key}: ${data1[key]}`, `+ ${key}: ${data2[key]}`);
-    } else {
-      acc.push(`  ${key}: ${data1[key]}`);
+const buildASTtree = (data1, data2) => {
+  const sortedKeys = _.sortBy(_.union(Object.keys(data1), Object.keys(data2)));
+
+  return sortedKeys.map((key) => {
+    const value1 = data1[key];
+    const value2 = data2[key];
+
+    if (!_.has(data1, key)) {
+      return buildKeyData(key, 'added', value2);
     }
 
-    return acc;
-  }, []);
+    if (!_.has(data2, key)) {
+      return buildKeyData(key, 'deleted', value1);
+    }
 
-  return ['{', ...diff].join('\n  ').concat('\n}');
+    if (!_.isEqual(value1, value2)) {
+      return _.isObject(value1) && _.isObject(value2)
+        ? buildKeyData(key, 'nested & modyfied', buildASTtree(value1, value2))
+        : buildKeyData(key, 'flat & modyfied', value1, value2);
+    }
+
+    return buildKeyData(key, 'unchanged', value1);
+  });
 };
 
-export { getExtension, readFile, compareData };
+const getIndent = (depth, extraSpace = 0) => ' '.repeat((depth * 4) - extraSpace);
+
+const stringify = (value, depth) => {
+  const iter = (currentValue, innerDepth) => {
+    if (!_.isObject(currentValue)) {
+      return `${currentValue}`;
+    }
+
+    const lines = Object
+      .entries(currentValue)
+      .map(([key, val]) => `${getIndent(innerDepth + 1)}${key}: ${iter(val, innerDepth + 1)}`);
+
+    return [
+      '{',
+      ...lines,
+      `${getIndent(innerDepth)}}`,
+    ].join('\n');
+  };
+
+  return iter(value, depth);
+};
+
+export { getExtension, readFile, buildASTtree, getIndent, stringify };
