@@ -21,3 +21,9 @@ $ sudo npm link
 
 #### Compare YAML files with 'stylish' formatter
 <a href="https://asciinema.org/a/561975" target="_blank"><img src="https://asciinema.org/a/561975.svg" width="540"/></a>
+
+#### Compare JSON files with 'plain' formatter
+<a href="https://asciinema.org/a/0MFsT1QOCWaXU2E6WkGChW27O" target="_blank"><img src="https://asciinema.org/a/0MFsT1QOCWaXU2E6WkGChW27O.svg" width="540"/></a>
+
+#### Compare YAML files with 'plain' formatter
+<a href="https://asciinema.org/a/A0N3HPvSEp4yXtS2Zo5gmYPeO" target="_blank"><img src="https://asciinema.org/a/A0N3HPvSEp4yXtS2Zo5gmYPeO.svg" width="540"/></a>

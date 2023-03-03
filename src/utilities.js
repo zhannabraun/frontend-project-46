@@ -22,7 +22,7 @@ const buildASTtree = (data1, data2) => {
     }
 
     if (!_.has(data2, key)) {
-      return buildKeyData(key, 'deleted', value1);
+      return buildKeyData(key, 'removed', value1);
     }
 
     if (!_.isEqual(value1, value2)) {
@@ -35,26 +35,4 @@ const buildASTtree = (data1, data2) => {
   });
 };
 
-const getIndent = (depth, extraSpace = 0) => ' '.repeat((depth * 4) - extraSpace);
-
-const stringify = (value, depth) => {
-  const iter = (currentValue, innerDepth) => {
-    if (!_.isObject(currentValue)) {
-      return `${currentValue}`;
-    }
-
-    const lines = Object
-      .entries(currentValue)
-      .map(([key, val]) => `${getIndent(innerDepth + 1)}${key}: ${iter(val, innerDepth + 1)}`);
-
-    return [
-      '{',
-      ...lines,
-      `${getIndent(innerDepth)}}`,
-    ].join('\n');
-  };
-
-  return iter(value, depth);
-};
-
-export { getExtension, readFile, buildASTtree, getIndent, stringify };
+export { getExtension, readFile, buildASTtree };
