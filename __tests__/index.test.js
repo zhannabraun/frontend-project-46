@@ -1,4 +1,4 @@
-import { test, expect, describe, beforeAll } from '@jest/globals';
+import { test, expect, describe } from '@jest/globals';
 import url from 'url';
 import path from 'path';
 import { readFile } from '../src/utilities.js';
@@ -8,48 +8,21 @@ const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-let filepathJSON1;
-let filepathJSON2;
-let filepathYAML1;
-let filepathYAML2;
-let resultStylish;
-let resultPlain;
+describe.each`
+formatName     | expected
+${'stylish'} | ${'result_stylish.txt'}
+${'plain'}   | ${'result_plain.txt'}
+${'json'}    | ${'result_json.txt'}
+`("'$formatName' formatter", ({ formatName, expected }) => {
+  test.each`
+  file1           | file2
+  ${'file1.json'} | ${'file2.json'}
+  ${'file1.yml'}  | ${'file2.yml'}
+  `('compare $file1 & $file2', ({ file1, file2 }) => {
+    const filepath1 = getFixturePath(file1);
+    const filepath2 = getFixturePath(file2);
+    const result = readFile(getFixturePath(expected));
 
-beforeAll(() => {
-  filepathJSON1 = getFixturePath('file1.json');
-  filepathJSON2 = getFixturePath('file2.json');
-  filepathYAML1 = getFixturePath('file1.yml');
-  filepathYAML2 = getFixturePath('file2.yml');
-  resultStylish = readFile(getFixturePath('result_stylish.txt'));
-  resultPlain = readFile(getFixturePath('result_plain.txt'));
-});
-
-describe("'stylish' formatter", () => {
-  test('compare JSON files', () => {
-    expect(genDiff(filepathJSON1, filepathJSON2, 'stylish')).toEqual(resultStylish);
-  });
-
-  test('compare YAML files', () => {
-    expect(genDiff(filepathYAML1, filepathYAML2, 'stylish')).toEqual(resultStylish);
-  });
-});
-
-describe("'plain' formatter", () => {
-  test('compare JSON files', () => {
-    expect(genDiff(filepathJSON1, filepathJSON2, 'plain')).toEqual(resultPlain);
-  });
-
-  test('compare YAML files', () => {
-    expect(genDiff(filepathYAML1, filepathYAML2, 'plain')).toEqual(resultPlain);
-  });
-});
-
-describe('Unknown format', () => {
-  test('compare JSON files', () => {
-    expect(genDiff(filepathJSON1, filepathJSON2, 'plain')).toEqual(resultPlain);
-  });
-
-  test('compare YAML files', () => {
-    expect(genDiff(filepathYAML1, filepathYAML2, 'plain')).toEqual(resultPlain);
+    expect(genDiff(filepath1, filepath2, formatName)).toEqual(result);
   });
 });
