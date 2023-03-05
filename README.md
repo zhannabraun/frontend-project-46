@@ -17,7 +17,7 @@ $ sudo npm link
 
 ### Usage (on the example of JSON files)
 #### Comparing with 'stylish' formatter
-<a href="https://asciinema.org/a/561974" target="_blank"><img src="https://asciinema.org/a/561974.svg" width="540"/></a>
+<a href="https://asciinema.org/a/XlmmHsZ3YDDQ3kZnEWpXVMiJF" target="_blank"><img src="https://asciinema.org/a/XlmmHsZ3YDDQ3kZnEWpXVMiJF.svg" width="540"/></a>
 
 #### Comparing with 'plain' formatter
 <a href="https://asciinema.org/a/0MFsT1QOCWaXU2E6WkGChW27O" target="_blank"><img src="https://asciinema.org/a/0MFsT1QOCWaXU2E6WkGChW27O.svg" width="540"/></a>
