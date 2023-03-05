@@ -1,4 +1,4 @@
-# File difference generator
+# FILE DIFFERENCE GENERATOR
 
 [![Actions Status](https://github.com/zhannabraun/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/zhannabraun/frontend-project-46/actions)
 [![Node CI](https://github.com/zhannabraun/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/zhannabraun/frontend-project-46/actions/workflows/nodejs.yml)
