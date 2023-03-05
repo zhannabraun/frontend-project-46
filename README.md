@@ -5,7 +5,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/ccd0b09182f651700d06/maintainability)](https://codeclimate.com/github/zhannabraun/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ccd0b09182f651700d06/test_coverage)](https://codeclimate.com/github/zhannabraun/frontend-project-46/test_coverage)
 
-'File difference generator' – programm that compares two configuration files and shows a difference.
+'File difference generator' – the program that compares two configuration files and shows a difference. The difference can be displayed in three formats: 'stylish', 'plain' or 'json'. Supported configuration file formats - JSON, YAML, YML.
 
 ### Installation & Start
 
@@ -16,14 +16,12 @@ $ sudo npm link
 ```
 
 ### Usage
-#### Compare JSON files with 'stylish' formatter
+##### (on the example of JSON files)
+#### Comparing with 'stylish' formatter
 <a href="https://asciinema.org/a/561974" target="_blank"><img src="https://asciinema.org/a/561974.svg" width="540"/></a>
 
-#### Compare YAML files with 'stylish' formatter
-<a href="https://asciinema.org/a/561975" target="_blank"><img src="https://asciinema.org/a/561975.svg" width="540"/></a>
-
-#### Compare JSON files with 'plain' formatter
+#### Comparing with 'plain' formatter
 <a href="https://asciinema.org/a/0MFsT1QOCWaXU2E6WkGChW27O" target="_blank"><img src="https://asciinema.org/a/0MFsT1QOCWaXU2E6WkGChW27O.svg" width="540"/></a>
 
-#### Compare YAML files with 'plain' formatter
-<a href="https://asciinema.org/a/A0N3HPvSEp4yXtS2Zo5gmYPeO" target="_blank"><img src="https://asciinema.org/a/A0N3HPvSEp4yXtS2Zo5gmYPeO.svg" width="540"/></a>
+#### Comparing with 'json' formatter
+<a href="https://asciinema.org/a/MeRbu7T8FifW8ZNbvCLYcZXSH" target="_blank"><img src="https://asciinema.org/a/MeRbu7T8FifW8ZNbvCLYcZXSH.svg" width="540"/></a>
