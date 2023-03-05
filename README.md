@@ -15,8 +15,7 @@ $ make install
 $ sudo npm link
 ```
 
-### Usage
-##### (on the example of JSON files)
+### Usage (on the example of JSON files)
 #### Comparing with 'stylish' formatter
 <a href="https://asciinema.org/a/561974" target="_blank"><img src="https://asciinema.org/a/561974.svg" width="540"/></a>
 
