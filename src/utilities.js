@@ -6,8 +6,8 @@ const getExtension = (filepath) => path.extname(filepath);
 
 const readFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
 
-const buildKeyData = (key, status, value, modyfiedValue = '') => (
-  { key, status, value, modyfiedValue }
+const buildKeyData = (key, type, value) => (
+  { key, type, value }
 );
 
 const buildASTtree = (data1, data2) => {
@@ -27,8 +27,8 @@ const buildASTtree = (data1, data2) => {
 
     if (!_.isEqual(value1, value2)) {
       return _.isObject(value1) && _.isObject(value2)
-        ? buildKeyData(key, 'nested & modyfied', buildASTtree(value1, value2))
-        : buildKeyData(key, 'flat & modyfied', value1, value2);
+        ? { key, type: 'nested', children: buildASTtree(value1, value2) }
+        : { key, type: 'updated', value: [value1, value2] };
     }
 
     return buildKeyData(key, 'unchanged', value1);

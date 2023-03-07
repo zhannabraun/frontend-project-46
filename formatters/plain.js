@@ -15,22 +15,21 @@ const getFormattedValue = (value) => {
 const plain = (ASTtree) => {
   const iter = (currentValue, currentKey = '') => {
     const lines = currentValue
-      .filter((keyData) => (keyData.status !== 'unchanged'))
+      .filter((keyData) => (keyData.type !== 'unchanged'))
       .map((keyData) => {
-        const { key, status, value, modyfiedValue } = keyData;
+        const { key, type, value, children } = keyData;
         const newKey = (currentKey !== '') ? `${currentKey}.${key}` : key;
-        const newValue = getFormattedValue(value);
-        const newModyfiedValue = getFormattedValue(modyfiedValue);
+        const mainText = `Property '${newKey}' was ${type}`;
 
-        switch (status) {
+        switch (type) {
           case 'added':
-            return `Property '${newKey}' was added with value: ${newValue}`;
+            return `${mainText} with value: ${getFormattedValue(value)}`;
           case 'removed':
-            return `Property '${newKey}' was removed`;
-          case 'flat & modyfied':
-            return `Property '${newKey}' was updated. From ${newValue} to ${newModyfiedValue}`;
+            return `${mainText}`;
+          case 'updated':
+            return `${mainText}. From ${getFormattedValue(value[0])} to ${getFormattedValue(value[1])}`;
           default:
-            return iter(value, newKey);
+            return iter(children, newKey);
         }
       });
 

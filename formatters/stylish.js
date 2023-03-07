@@ -25,22 +25,20 @@ const getStringifyValue = (value, depth) => {
 const stylish = (ASTtree) => {
   const iter = (currentValue, depth) => {
     const lines = currentValue.map((keyData) => {
-      const { key, status, value, modyfiedValue } = keyData;
-      const stringifyValue = getStringifyValue(value, depth);
-      const stringifyModyfiedValue = getStringifyValue(modyfiedValue, depth);
+      const { key, type, value, children } = keyData;
       const indent = getIndent(depth, 2);
 
-      switch (status) {
+      switch (type) {
         case 'added':
-          return `${indent}+ ${key}: ${stringifyValue}`;
+          return `${indent}+ ${key}: ${getStringifyValue(value, depth)}`;
         case 'removed':
-          return `${indent}- ${key}: ${stringifyValue}`;
-        case 'flat & modyfied':
-          return `${indent}- ${key}: ${stringifyValue}\n${indent}+ ${key}: ${stringifyModyfiedValue}`;
-        case 'nested & modyfied':
-          return `${indent}  ${key}: ${iter(value, depth + 1)}`;
+          return `${indent}- ${key}: ${getStringifyValue(value, depth)}`;
+        case 'updated':
+          return `${indent}- ${key}: ${getStringifyValue(value[0], depth)}\n${indent}+ ${key}: ${getStringifyValue(value[1], depth)}`;
+        case 'nested':
+          return `${indent}  ${key}: ${iter(children, depth + 1)}`;
         default:
-          return `${indent}  ${key}: ${stringifyValue}`;
+          return `${indent}  ${key}: ${getStringifyValue(value, depth)}`;
       }
     });
 
