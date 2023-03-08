@@ -4,7 +4,7 @@
   "type": "module",
   "description": "Compares two configuration files and shows a difference.",
   "bin": {
-    "gendiff": "bin/gendiff.js"
+    "gendiff": "./bin/gendiff.js"
   },
   "main": "./src/index.js",
   "scripts": {
