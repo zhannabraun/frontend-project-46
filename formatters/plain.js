@@ -17,7 +17,12 @@ const plain = (ASTtree) => {
     const lines = currentValue
       .filter((keyData) => (keyData.type !== 'unchanged'))
       .map((keyData) => {
-        const { key, type, value, children } = keyData;
+        const {
+          key,
+          type,
+          value,
+          children,
+        } = keyData;
         const newKey = (currentKey !== '') ? `${currentKey}.${key}` : key;
         const mainText = `Property '${newKey}' was ${type}`;
 

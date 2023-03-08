@@ -25,7 +25,12 @@ const getStringifyValue = (value, depth) => {
 const stylish = (ASTtree) => {
   const iter = (currentValue, depth) => {
     const lines = currentValue.map((keyData) => {
-      const { key, type, value, children } = keyData;
+      const {
+        key,
+        type,
+        value,
+        children,
+      } = keyData;
       const indent = getIndent(depth, 2);
 
       switch (type) {
