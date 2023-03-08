@@ -17,9 +17,7 @@ const plain = (ASTtree) => {
     const lines = currentValue
       .filter((keyData) => (keyData.type !== 'unchanged'))
       .map((keyData) => {
-        const {
-          key, type, value, children,
-        } = keyData;
+        const { key, type, value } = keyData;
         const newKey = (currentKey !== '') ? `${currentKey}.${key}` : key;
         const mainText = `Property '${newKey}' was ${type}`;
 
@@ -31,7 +29,7 @@ const plain = (ASTtree) => {
           case 'updated':
             return `${mainText}. From ${getFormattedValue(value[0])} to ${getFormattedValue(value[1])}`;
           default:
-            return iter(children, newKey);
+            return iter(keyData.children, newKey);
         }
       });
 

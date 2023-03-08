@@ -25,9 +25,7 @@ const getStringifyValue = (value, depth) => {
 const stylish = (ASTtree) => {
   const iter = (currentValue, depth) => {
     const lines = currentValue.map((keyData) => {
-      const {
-        key, type, value, children,
-      } = keyData;
+      const { key, type, value } = keyData;
       const indent = getIndent(depth, 2);
 
       switch (type) {
@@ -38,7 +36,7 @@ const stylish = (ASTtree) => {
         case 'updated':
           return `${indent}- ${key}: ${getStringifyValue(value[0], depth)}\n${indent}+ ${key}: ${getStringifyValue(value[1], depth)}`;
         case 'nested':
-          return `${indent}  ${key}: ${iter(children, depth + 1)}`;
+          return `${indent}  ${key}: ${iter(keyData.children, depth + 1)}`;
         default:
           return `${indent}  ${key}: ${getStringifyValue(value, depth)}`;
       }
