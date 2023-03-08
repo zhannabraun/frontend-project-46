@@ -5,7 +5,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/ccd0b09182f651700d06/maintainability)](https://codeclimate.com/github/zhannabraun/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/ccd0b09182f651700d06/test_coverage)](https://codeclimate.com/github/zhannabraun/frontend-project-46/test_coverage)
 
-'GenDiff' is a file difference generator. This is a command-line app that compares two configuration files and shows the difference. The difference can be displayed in three formats: 'stylish', 'plain' or 'json'. Supported configuration files formats - JSON (.json) and YAML (.yaml or .yml).
+'GenDiff' is a file difference generator. This is a CLI app that compares two configuration files and shows the difference. The difference can be displayed in three formats: 'stylish', 'plain' or 'json'. Supported configuration files formats - JSON (.json) and YAML (.yaml or .yml).
 
 ### Installation
 
