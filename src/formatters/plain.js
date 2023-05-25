@@ -19,15 +19,14 @@ const plain = (ASTtree) => {
       .map((keyData) => {
         const { key, type, value } = keyData;
         const newKey = (currentKey !== '') ? `${currentKey}.${key}` : key;
-        const mainText = `Property '${newKey}' was ${type}`;
 
         switch (type) {
           case 'added':
-            return `${mainText} with value: ${getFormattedValue(value)}`;
+            return `Property '${newKey}' was added with value: ${getFormattedValue(value)}`;
           case 'removed':
-            return `${mainText}`;
-          case 'updated':
-            return `${mainText}. From ${getFormattedValue(value[0])} to ${getFormattedValue(value[1])}`;
+            return `Property '${newKey}' was removed`;
+          case 'changed':
+            return `Property '${newKey}' was updated. From ${getFormattedValue(value[0])} to ${getFormattedValue(value[1])}`;
           default:
             return iter(keyData.children, newKey);
         }

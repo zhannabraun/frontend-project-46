@@ -1,13 +1,11 @@
 import YAML from 'yamljs';
-import { getExtension, readFile } from './utilities.js';
 
-const parse = (filepath) => {
-  const extension = getExtension(filepath);
-  if (extension === '.yaml' || extension === '.yml') {
-    return YAML.parse(readFile(filepath));
+const parse = (data, fileFormat) => {
+  if (fileFormat === 'yaml' || fileFormat === 'yml') {
+    return YAML.parse(data);
   }
 
-  return JSON.parse(readFile(filepath));
+  return JSON.parse(data);
 };
 
 export default parse;

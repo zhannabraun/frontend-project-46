@@ -1,8 +1,5 @@
 import _ from 'lodash';
-import path from 'path';
 import fs from 'fs';
-
-const getExtension = (filepath) => path.extname(filepath);
 
 const readFile = (filepath) => fs.readFileSync(filepath, 'utf-8');
 
@@ -28,11 +25,11 @@ const buildASTtree = (data1, data2) => {
     if (!_.isEqual(value1, value2)) {
       return _.isObject(value1) && _.isObject(value2)
         ? { key, type: 'nested', children: buildASTtree(value1, value2) }
-        : { key, type: 'updated', value: [value1, value2] };
+        : buildKeyData(key, 'changed', [value1, value2]);
     }
 
     return buildKeyData(key, 'unchanged', value1);
   });
 };
 
-export { getExtension, readFile, buildASTtree };
+export { readFile, buildASTtree };

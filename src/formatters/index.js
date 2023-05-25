@@ -1,6 +1,5 @@
 import stylish from './stylish.js';
 import plain from './plain.js';
-import json from './json.js';
 
 const getFormattedTree = (ASTtree, formatName) => {
   switch (formatName) {
@@ -9,7 +8,7 @@ const getFormattedTree = (ASTtree, formatName) => {
     case 'plain':
       return plain(ASTtree);
     case 'json':
-      return json(ASTtree);
+      return JSON.stringify(ASTtree);
     default:
       throw new Error(`Unknown format '${formatName}'`);
   }

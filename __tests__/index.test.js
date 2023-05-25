@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
 describe.each`
-formatName     | expected
+formatName   | expected
 ${'stylish'} | ${'result_stylish.txt'}
 ${'plain'}   | ${'result_plain.txt'}
 ${'json'}    | ${'result_json.txt'}
